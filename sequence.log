@@ -1,0 +1,7 @@
+14:33:05	STS RUN 
+14:33:07	SEQ 4 1 #Autozero delay# 
+14:33:08	SEQ 5 2 #Autozero# 
+14:33:09	SEQ 6 2 #Autozero# 
+14:33:10	SEQ 7 3 #Basislinie# 
+14:40:11	SEQ 41 17 #End of analysis# 
+14:41:12	SEQ 42 18 #Error inquiry# 

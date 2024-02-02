@@ -1,0 +1,45 @@
+14:33:05	STS RUN 
+14:33:16	SEQ 1 0 #*# 
+14:33:17	SEQ 2 0 #*# 
+14:33:18	SEQ 3 0 #*# 
+14:33:19	SEQ 4 1 #Autozero delay# 
+14:33:30	SEQ 5 2 #Autozero# 
+14:33:31	SEQ 6 2 #Autozero# 
+14:33:43	SEQ 7 3 #Basislinie# 
+14:33:47	SEQ 8 3 #Basislinie# 
+14:33:49	SEQ 9 3 #Basislinie# 
+14:33:54	SEQ 10 3 #Basislinie# 
+14:34:01	SEQ 11 3 #Basislinie# 
+14:34:02	SEQ 12 3 #Basislinie# 
+14:34:03	SEQ 13 4 #Feeding# 
+14:34:07	SEQ 14 5 #Flush# 
+14:34:27	SEQ 15 6 #Throw-in sample# 
+14:34:31	SEQ 16 6 #Throw-in sample# 
+14:34:32	SEQ 17 6 #Throw-in sample# 
+14:34:33	SEQ 18 6 #Throw-in sample# 
+14:34:34	SEQ 19 6 #Throw-in sample# 
+14:34:38	SEQ 20 7 #Int. delay N# 
+14:34:58	SEQ 21 7 #Int. delay N# 
+14:35:00	SEQ 22 8 #Integration N# 
+14:36:34	SEQ 23 9 #Ads. column C# 
+14:36:35	SEQ 24 9 #Ads. column C# 
+14:36:36	SEQ 25 10 #Autozero delay# 
+14:36:52	SEQ 26 11 #Autozero C# 
+14:36:53	SEQ 27 11 #Autozero C# 
+14:37:05	SEQ 28 12 #Basislinie# 
+14:37:08	SEQ 29 12 #Basislinie# 
+14:37:10	SEQ 30 13 #Int. delay C# 
+14:37:13	SEQ 31 13 #Int. delay C# 
+14:37:14	SEQ 32 14 #Integration C# 
+14:39:09	SEQ 33 15 #Ads. column H# 
+14:39:10	SEQ 34 15 #Ads. column H# 
+14:39:13	PCT 10 C 0.000000 
+14:39:17	PCT 10 N 0.000000 
+14:40:11	SEQ 35 15 #Ads. column H# 
+14:40:12	SEQ 36 15 #Ads. column H# 
+14:40:13	SEQ 37 15 #Ads. column H# 
+14:40:14	SEQ 38 16 #Cooling# 
+14:40:56	SEQ 39 16 #Cooling# 
+14:40:58	SEQ 40 16 #Cooling# 
+14:40:58	SEQ 41 17 #End of analysis# 
+14:41:00	SEQ 42 18 #Error inquiry# 
