@@ -1,7 +1,24 @@
 14:33:05	STS RUN 
-14:33:07	SEQ 4 1 #Autozero delay# 
-14:33:08	SEQ 5 2 #Autozero# 
-14:33:09	SEQ 6 2 #Autozero# 
-14:33:10	SEQ 7 3 #Basislinie# 
-14:40:11	SEQ 41 17 #End of analysis# 
-14:41:12	SEQ 42 18 #Error inquiry# 
+14:33:06	SEQ 1 0 #*# 
+14:33:07	SEQ 2 0 #*# 
+14:33:08	SEQ 3 0 #*# 
+14:33:09	SEQ 4 1 #Autozero delay# 
+14:33:10	SEQ 5 2 #Autozero# 
+14:33:11	SEQ 7 3 #Basislinie# 
+14:33:12	SEQ 13 4 #Feeding# 
+14:33:13	SEQ 14 5 #Flush# 
+14:33:14	SEQ 15 6 #Throw-in sample# 
+14:33:15	SEQ 20 7 #Int. delay N# 
+14:33:16	SEQ 22 8 #Integration N# 
+14:33:17	SEQ 23 9 #Ads. column C# 
+14:33:18	SEQ 25 10 #Autozero delay# 
+14:33:19	SEQ 26 11 #Autozero C# 
+14:33:20	SEQ 28 12 #Basislinie# 
+14:33:21	SEQ 30 13 #Int. delay C# 
+14:33:22	SEQ 32 14 #Integration C# 
+14:33:27	PCT 10 C 0.000000 
+14:33:28	PCT 10 N 0.000000 
+14:33:23	SEQ 33 15 #Ads. column H# 
+14:33:24	SEQ 38 16 #Cooling# 
+14:33:25	SEQ 41 17 #End of analysis# 
+14:33:26	SEQ 42 18 #Error inquiry# 

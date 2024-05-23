@@ -6,33 +6,42 @@ import (
 	"io"
 	"net"
 	"os"
+	"regexp"
+	"strconv"
 	"strings"
 	"time"
 )
 
-var names = []string{
-	"sample 1",
-	"sample 2",
-	"sample 3",
-	"sample 4",
-	"sample 5",
-	"sample 6",
-	"sample 7",
-	"sample 8",
-	"sample 9",
-	"sample 10",
+var sampleNames = []string{
+	"Pre",
+	"RunIn",
+	"First",
+	"Pirmas",
+	"Antras",
+}
+
+var sampleWeights = []string{
+	"1.1", "1.2", "1.3", "1.4", "1.5",
 }
 
 func main() {
+
+	if len(os.Args) < 2 {
+		fmt.Println("need port specified in args, please run executable like 'cube.exe 4321'")
+		return
+	}
+
+	port := os.Args[1]
+
 	// Listen on TCP port 8080
-	ln, err := net.Listen("tcp", ":1984")
+	ln, err := net.Listen("tcp", ":"+port)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 	// defer ln.Close()
 
-	fmt.Println("TCP server listening on port 1984")
+	fmt.Printf("TCP server listening on port %s", port)
 
 	for {
 		// Accept a connection
@@ -75,11 +84,54 @@ func handleConnection(conn net.Conn) {
 }
 
 func respond(m string, conn net.Conn) {
-	switch m {
-	case "?STS\r\n":
+	namPattern := regexp.MustCompile(`^\?NAM\s+(\d+)\r\n$`)
+	wghPattern := regexp.MustCompile(`^\?WGH\s+(\d+)\r\n$`)
+
+	switch {
+	case m == "?STS\r\n":
 		conn.Write([]byte("STS READY"))
-	case "START\r\n":
+	case m == "STRT\r\n":
 		go startSequence(conn)
+	case m == "?SINX\r\n":
+		conn.Write([]byte("SINX 1"))
+	case namPattern.MatchString(m):
+		match := namPattern.FindStringSubmatch(m)
+		if len(match) > 1 {
+			nameNumber := match[1]
+
+			nameNumberInt, err := strconv.Atoi(nameNumber)
+			if err != nil {
+				fmt.Printf("cannot convert %s to integer!", nameNumber)
+			}
+
+			if nameNumberInt > len(sampleNames) {
+				conn.Write([]byte(""))
+			} else {
+				index := nameNumberInt - 1
+				sampleName := sampleNames[index]
+				conn.Write([]byte(fmt.Sprintf("NAM %d %s", nameNumberInt, sampleName)))
+			}
+		}
+	case wghPattern.MatchString(m):
+		match := wghPattern.FindStringSubmatch(m)
+		if len(match) > 1 {
+			nameNumber := match[1]
+
+			nameNumberInt, err := strconv.Atoi(nameNumber)
+			if err != nil {
+				fmt.Printf("cannot convert %s to integer!", nameNumber)
+			}
+
+			if nameNumberInt > len(sampleNames) {
+				conn.Write([]byte(""))
+			} else {
+				index := nameNumberInt - 1
+				sampleName := sampleWeights[index]
+				println(fmt.Sprintf("WGH %d %s", nameNumberInt, sampleName))
+				conn.Write([]byte(fmt.Sprintf("WGH %d %s", nameNumberInt, sampleName)))
+			}
+		}
+
 	default:
 		conn.Write([]byte(fmt.Sprintf("Response message to %s\n", m)))
 	}
