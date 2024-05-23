@@ -24,6 +24,8 @@ var sampleWeights = []string{
 	"1.1", "1.2", "1.3", "1.4", "1.5",
 }
 
+var sinxPosition int = 1
+
 func main() {
 
 	if len(os.Args) < 2 {
@@ -92,8 +94,12 @@ func respond(m string, conn net.Conn) {
 		conn.Write([]byte("STS READY"))
 	case m == "STRT\r\n":
 		go startSequence(conn)
+	case m == "reset_sinx\r\n":
+		sinxPosition = 1
 	case m == "?SINX\r\n":
-		conn.Write([]byte("SINX 1"))
+		msg := fmt.Sprintf("SINX %d", sinxPosition)
+		conn.Write([]byte(msg))
+		sinxPosition++
 	case namPattern.MatchString(m):
 		match := namPattern.FindStringSubmatch(m)
 		if len(match) > 1 {
