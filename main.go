@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"math/rand"
 	"net"
 	"os"
 	"regexp"
@@ -137,6 +138,12 @@ func respond(m string, conn net.Conn) {
 				conn.Write([]byte(fmt.Sprintf("WGH %d %s", nameNumberInt, sampleName)))
 			}
 		}
+
+	case strings.HasPrefix(m, "?PCT"):
+		rand.Seed(time.Now().UnixNano())
+		randNum := rand.Intn(100)
+		pct := float32(randNum) / 100
+		conn.Write([]byte(fmt.Sprintf("PCT X C %f", pct)))
 
 	default:
 		conn.Write([]byte(fmt.Sprintf("Response message to %s\n", m)))

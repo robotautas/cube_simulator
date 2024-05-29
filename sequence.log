@@ -1,6 +1,4 @@
-14:33:05	STS RUN 
-14:33:06	SEQ 1 0 #*# 
-14:33:07	SEQ 2 0 #*# 
+14:33:07	STS RUN 
 14:33:08	SEQ 3 0 #*# 
 14:33:09	SEQ 4 1 #Autozero delay# 
 14:33:10	SEQ 5 2 #Autozero# 
@@ -16,8 +14,6 @@
 14:33:20	SEQ 28 12 #Basislinie# 
 14:33:21	SEQ 30 13 #Int. delay C# 
 14:33:22	SEQ 32 14 #Integration C# 
-14:33:27	PCT 10 C 0.000000 
-14:33:28	PCT 10 N 0.000000 
 14:33:23	SEQ 33 15 #Ads. column H# 
 14:33:24	SEQ 38 16 #Cooling# 
 14:33:25	SEQ 41 17 #End of analysis# 
