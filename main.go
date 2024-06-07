@@ -92,13 +92,13 @@ func respond(m string, conn net.Conn) {
 
 	switch {
 	case m == "?STS\r\n":
-		conn.Write([]byte("STS READY"))
+		conn.Write([]byte("STS READY\n"))
 	case m == "STRT\r\n":
 		go startSequence(conn)
 	case m == "reset_sinx\r\n":
 		sinxPosition = 1
 	case m == "?SINX\r\n":
-		msg := fmt.Sprintf("SINX %d", sinxPosition)
+		msg := fmt.Sprintf("SINX %d\n", sinxPosition)
 		conn.Write([]byte(msg))
 		sinxPosition++
 	case namPattern.MatchString(m):
@@ -116,7 +116,7 @@ func respond(m string, conn net.Conn) {
 			} else {
 				index := nameNumberInt - 1
 				sampleName := sampleNames[index]
-				conn.Write([]byte(fmt.Sprintf("NAM %d %s", nameNumberInt, sampleName)))
+				conn.Write([]byte(fmt.Sprintf("NAM %d %s\n", nameNumberInt, sampleName)))
 			}
 		}
 	case wghPattern.MatchString(m):
@@ -135,7 +135,7 @@ func respond(m string, conn net.Conn) {
 				index := nameNumberInt - 1
 				sampleName := sampleWeights[index]
 				println(fmt.Sprintf("WGH %d %s", nameNumberInt, sampleName))
-				conn.Write([]byte(fmt.Sprintf("WGH %d %s", nameNumberInt, sampleName)))
+				conn.Write([]byte(fmt.Sprintf("WGH %d %s\n", nameNumberInt, sampleName)))
 			}
 		}
 
@@ -143,7 +143,7 @@ func respond(m string, conn net.Conn) {
 		rand.Seed(time.Now().UnixNano())
 		randNum := rand.Intn(100)
 		pct := float32(randNum) / 100
-		conn.Write([]byte(fmt.Sprintf("PCT X C %f", pct)))
+		conn.Write([]byte(fmt.Sprintf("PCT X C %f\n", pct)))
 
 	default:
 		conn.Write([]byte(fmt.Sprintf("Response message to %s\n", m)))
